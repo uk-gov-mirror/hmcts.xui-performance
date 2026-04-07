@@ -289,26 +289,26 @@ object Solicitor_PRL_C100 {
 
     .pause(MinThinkTime, MaxThinkTime)
 
-     // .group("XUI_PRL_C100_150_005_PermissionUpload") {
-     //   exec(http("XUI_PRL_C100_150_005_PermissionUpload")
-     //     .post("/documents")
-     //     .headers(Headers.commonHeader)
-     //     .header("accept", "application/json, text/plain, */*")
-     //     .header("content-type", "multipart/form-data")
-     //     .header("x-xsrf-token", "#{XSRFToken}")
-     //     .bodyPart(RawFileBodyPart("files", "7PageDoc.pdf")
-     //       .fileName("7PageDoc.pdf")
-     //       .transferEncoding("binary"))
-     //     .asMultipartForm
-     //     .formParam("classification", "PUBLIC")
-     //     .formParam("caseTypeId", "PRLAPPS")
-     //     .formParam("jurisdictionId", "PRIVATELAW")
-     //     .check(substring("originalDocumentName"))
+      .group("XUI_PRL_C100_150_005_PermissionUpload") {
+        exec(http("XUI_PRL_C100_150_005_PermissionUpload")
+          .post("/documents")
+          .headers(Headers.commonHeader)
+          .header("accept", "application/json, text/plain, */*")
+          .header("content-type", "multipart/form-data")
+          .header("x-xsrf-token", "#{XSRFToken}")
+          .bodyPart(RawFileBodyPart("files", "7PageDoc.pdf")
+            .fileName("7PageDoc.pdf")
+            .transferEncoding("binary"))
+          .asMultipartForm
+          .formParam("classification", "PUBLIC")
+          .formParam("caseTypeId", "PRLAPPS")
+          .formParam("jurisdictionId", "PRIVATELAW")
+          .check(substring("originalDocumentName"))
           //.check(jsonPath("$.documents[0].hashToken").saveAs("documentHash_permission"))
-     //     .check(jsonPath("$._embedded.documents[0]._links.self.href").saveAs("DocumentURL_permission")))
-     // }
+          .check(jsonPath("$._embedded.documents[0]._links.self.href").saveAs("DocumentURL_permission")))
+      }
 
-     // .pause(MinThinkTime, MaxThinkTime)
+      .pause(MinThinkTime, MaxThinkTime)
 
     /*======================================================================================
     * Have you applied to the court for permission to make this application? - Yes
@@ -320,7 +320,7 @@ object Solicitor_PRL_C100 {
         .headers(Headers.commonHeader)
         .header("accept", "application/vnd.uk.gov.hmcts.ccd-data-store-api.case-data-validate.v2+json;charset=UTF-8")
         .header("x-xsrf-token", "#{XSRFToken}")
-        .body(ElFileBody("bodies/prl/c100/PRLPermissionRequired.json"))
+        .body(ElFileBody("bodies/prl/c100/PRLPermissionRequired_c100policy.json"))
         //.check(substring("orderInPlacePermissionRequired"))
         .check(substring("applicationPermissionRequired"))
       )
@@ -339,7 +339,7 @@ object Solicitor_PRL_C100 {
         .headers(Headers.commonHeader)
         .header("accept", "application/vnd.uk.gov.hmcts.ccd-data-store-api.case-data-validate.v2+json;charset=UTF-8")
         .header("x-xsrf-token", "#{XSRFToken}")
-        .body(ElFileBody("bodies/prl/c100/PRLProvideBriefDetails.json"))
+        .body(ElFileBody("bodies/prl/c100/PRLProvideBriefDetails_c100policy.json"))
         .check(substring("applicationDetails")))
 
       .exec(Common.userDetails)
@@ -357,7 +357,7 @@ object Solicitor_PRL_C100 {
         .headers(Headers.commonHeader)
         .header("accept", "application/vnd.uk.gov.hmcts.ccd-data-store-api.create-event.v2+json;charset=UTF-8")
         .header("x-xsrf-token", "#{XSRFToken}")
-        .body(ElFileBody("bodies/prl/c100/PRLCheckYourAnswersTypeOfApplication.json"))
+        .body(ElFileBody("bodies/prl/c100/PRLCheckYourAnswersTypeOfApplication_c100policy.json"))
         .check(substring("applicationPermissionRequired"))
         .check(jsonPath("$.state").is("AWAITING_SUBMISSION_TO_HMCTS")))
 

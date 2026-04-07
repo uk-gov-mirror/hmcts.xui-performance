@@ -159,17 +159,17 @@ class XUI_Simulation extends Simulation {
         .exec(Solicitor_PRL_C100.ViewPdfApplication)
         .exec(Solicitor_PRL_C100.SubmitAndPay)
         .exec(XuiHelper.Logout)
-        //.feed(UserFeederPRLCourtAdmin)
-        //.exec(XuiHelper.Homepage)
-        //.exec(XuiHelper.Login("#{userCourtAdmin}", "#{passwordCourtAdmin}"))
+        .feed(UserFeederPRLCourtAdmin)
+        .exec(XuiHelper.Homepage)
+        .exec(XuiHelper.Login("#{userCourtAdmin}", "#{passwordCourtAdmin}"))
         //Case worker progress case
-        //.exec(CourtAdmin_PRL_C100.CourtAdminCheckApplication)
-        //.exec(CourtAdmin_PRL_C100.CourtAdminSendToGateKeeper)
-        //.exec(CourtAdmin_PRL_C100.CourtAdminManageOrders)
-        //.exec(CourtAdmin_PRL_C100.CourtAdminServiceApplication)
-        //.exec(CourtAdmin_PRL_C100.CourtAdminListHearing)
-        //.exec(CourtAdmin_PRL_C100.CourtAdminHearingsTab)
-        //.exec(XuiHelper.Logout)
+        .exec(CourtAdmin_PRL_C100.CourtAdminCheckApplication)
+        .exec(CourtAdmin_PRL_C100.CourtAdminSendToGateKeeper)
+        .exec(CourtAdmin_PRL_C100.CourtAdminManageOrders)
+        .exec(CourtAdmin_PRL_C100.CourtAdminServiceApplication)
+        .exec(CourtAdmin_PRL_C100.CourtAdminListHearing)
+        .exec(CourtAdmin_PRL_C100.CourtAdminHearingsTab)
+        .exec(XuiHelper.Logout)
         /*.feed(UserFeederPRLCourtAdmin)
         .exec(XuiHelper.Homepage)
         .exec(XuiHelper.Login("#{userCourtAdmin}", "#{passwordCourtAdmin}"))
@@ -262,17 +262,17 @@ class XUI_Simulation extends Simulation {
         .exec(Solicitor_PRL_FL401.ViewPDF)
         .exec(Solicitor_PRL_FL401.StatementOfTruth)
         .exec(XuiHelper.Logout)
-        //.feed(UserFeederPRLCourtAdmin)
-        //.exec(XuiHelper.Homepage)
-        //.exec(XuiHelper.Login("#{userCourtAdmin}", "#{passwordCourtAdmin}"))
+        .feed(UserFeederPRLCourtAdmin)
+        .exec(XuiHelper.Homepage)
+        .exec(XuiHelper.Login("#{userCourtAdmin}", "#{passwordCourtAdmin}"))
         //Case worker progress case
-        //.exec(CourtAdmin_PRL_FL401.CourtAdminCheckApplication)
-        //.exec(CourtAdmin_PRL_FL401.CourtAdminSendToGateKeeper)
-        //.exec(CourtAdmin_PRL_FL401.CourtAdminManageOrders)
-        //.exec(CourtAdmin_PRL_FL401.CourtAdminServiceApplication)
-        //.exec(CourtAdmin_PRL_FL401.CourtAdminListHearing)
-        //.exec(CourtAdmin_PRL_FL401.CourtAdminHearingsTab)
-        //.exec(XuiHelper.Logout)
+        .exec(CourtAdmin_PRL_FL401.CourtAdminCheckApplication)
+        .exec(CourtAdmin_PRL_FL401.CourtAdminSendToGateKeeper)
+        .exec(CourtAdmin_PRL_FL401.CourtAdminManageOrders)
+        .exec(CourtAdmin_PRL_FL401.CourtAdminServiceApplication)
+        .exec(CourtAdmin_PRL_FL401.CourtAdminListHearing)
+        .exec(CourtAdmin_PRL_FL401.CourtAdminHearingsTab)
+        .exec(XuiHelper.Logout)
 
     }
 
@@ -750,13 +750,13 @@ class XUI_Simulation extends Simulation {
   }
 
   setUp(
-    //PRLC100AddLAScenario.inject(simulationProfile(testType, 200, 200)).pauses(pauseOption),
-    //PRLC100SolicitorScenario.inject(simulationProfile(testType, 1, 1)).pauses(pauseOption)
+    //PRLC100AddLAScenario.inject(simulationProfile(testType, 100, 100)).pauses(pauseOption),
+    ///PRLC100SolicitorScenario.inject(simulationProfile(testType, 1, 1)).pauses(pauseOption)
     //PRLC100LAScenario.inject(simulationProfile(testType, 1, 1)).pauses(pauseOption)
-    PRLC100CaseWorkerScenario.inject(simulationProfile(testType, prlC100LATargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
     //PRLC100CaseWorkerScenario.inject(simulationProfile(testType, prlC100LATargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    //PRLC100AddLAScenario.inject(simulationProfile(testType, prlC100LATargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-    //PRLC100LAScenario.inject(simulationProfile(testType, prlC100LATargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    //PRLC100CaseWorkerScenario.inject(simulationProfile(testType, prlC100LATargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+    PRLC100AddLAScenario.inject(simulationProfile(testType, prlC100LATargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+      PRLC100LAScenario.inject(simulationProfile(testType, prlC100LATargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
   PRLC100SolicitorScenario.inject(simulationProfile(testType, prlC100TargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
   PRLFL401SolicitorScenario.inject(simulationProfile(testType, prlFL401TargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
     /*PRLC100BarristerScenario.inject(simulationProfile(testType, prlC100BarristerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),

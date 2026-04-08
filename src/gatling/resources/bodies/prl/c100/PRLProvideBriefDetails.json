@@ -26,7 +26,7 @@
     "uploadOrderDocForPermission": {
       "document_url": "#{DocumentURL_permission}",
       "document_binary_url": "#{DocumentURL_permission}/binary",
-      "document_filename": "Doc1.docx"
+      "document_filename": "7PageDoc.pdf"
     },
     "applicationDetails": "Random Brief Details"
   },

@@ -296,8 +296,8 @@ object Solicitor_PRL_C100 {
           .header("accept", "application/json, text/plain, */*")
           .header("content-type", "multipart/form-data")
           .header("x-xsrf-token", "#{XSRFToken}")
-          .bodyPart(RawFileBodyPart("files", "3MB.pdf")
-            .fileName("3MB.pdf")
+          .bodyPart(RawFileBodyPart("files", "7PageDoc.pdf")
+            .fileName("7PageDoc.pdf")
             .transferEncoding("binary"))
           .asMultipartForm
           .formParam("classification", "PUBLIC")
@@ -321,7 +321,7 @@ object Solicitor_PRL_C100 {
         .header("accept", "application/vnd.uk.gov.hmcts.ccd-data-store-api.case-data-validate.v2+json;charset=UTF-8")
         .header("x-xsrf-token", "#{XSRFToken}")
         .body(ElFileBody("bodies/prl/c100/PRLPermissionRequired.json"))
-        .check(substring("applicationPermissionRequired")))
+        .check(substring("orderInPlacePermissionRequired")))
 
       .exec(Common.userDetails)
     }

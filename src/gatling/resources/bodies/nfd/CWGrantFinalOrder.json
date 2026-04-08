@@ -2,7 +2,8 @@
   "data": {
     "granted": [
       "Yes"
-    ]
+    ],
+    "grantWithCurrentDateTime": "Yes"
   },
   "event": {
     "id": "caseworker-grant-final-order",

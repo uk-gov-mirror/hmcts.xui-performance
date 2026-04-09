@@ -289,8 +289,8 @@ object Solicitor_PRL_C100 {
 
     .pause(MinThinkTime, MaxThinkTime)
 
-    .group("XUI_PRL_C100_150_PermissionUpload") {
-        exec(http("XUI_PRL_C100_150_005_PermissionUpload")
+    .group("XUI_PRL_C100_145_PermissionUpload") {
+        exec(http("XUI_PRL_C100_145_005_PermissionUpload")
           .post("/documents")
           .headers(Headers.commonHeader)
           .header("accept", "application/json, text/plain, */*")
@@ -313,8 +313,8 @@ object Solicitor_PRL_C100 {
     * Have you applied to the court for permission to make this application? - Yes
     ======================================================================================*/
 
-    .group("XUI_PRL_C100_155_PermissionForApplication") {
-      exec(http("XUI_PRL_C100_155_005_PermissionForApplication")
+    .group("XUI_PRL_C100_150_PermissionForApplication") {
+      exec(http("XUI_PRL_C100_150_005_PermissionForApplication")
         .post("/data/case-types/PRLAPPS/validate?pageId=selectApplicationType3")
         .headers(Headers.commonHeader)
         .header("accept", "application/vnd.uk.gov.hmcts.ccd-data-store-api.case-data-validate.v2+json;charset=UTF-8")

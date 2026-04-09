@@ -304,7 +304,6 @@ object Solicitor_PRL_C100 {
           .formParam("caseTypeId", "PRLAPPS")
           .formParam("jurisdictionId", "PRIVATELAW")
           .check(substring("originalDocumentName"))
-          //.check(jsonPath("$.documents[0].hashToken").saveAs("documentHash_permission"))
           .check(jsonPath("$._embedded.documents[0]._links.self.href").saveAs("DocumentURL_permission")))
       }
 
@@ -314,8 +313,8 @@ object Solicitor_PRL_C100 {
     * Have you applied to the court for permission to make this application? - Yes
     ======================================================================================*/
 
-    .group("XUI_PRL_C100_150_010_PermissionForApplication") {
-      exec(http("XUI_PRL_C100_150_010_PermissionForApplication")
+    .group("XUI_PRL_C100_155_PermissionForApplication") {
+      exec(http("XUI_PRL_C100_155_005_PermissionForApplication")
         .post("/data/case-types/PRLAPPS/validate?pageId=selectApplicationType3")
         .headers(Headers.commonHeader)
         .header("accept", "application/vnd.uk.gov.hmcts.ccd-data-store-api.case-data-validate.v2+json;charset=UTF-8")

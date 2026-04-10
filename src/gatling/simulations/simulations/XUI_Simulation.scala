@@ -78,7 +78,7 @@ class XUI_Simulation extends Simulation {
 	val pauseOption: PauseType = debugMode match {
 		case "off" if testType == "perftest" => constantPauses
 		case "off" if testType == "pipeline" => customPauses(pipelinePausesMillis)
-		case _ => disabledPauses
+		case _ => constantPauses //disabledPauses
 	}
 
 	val httpProtocol = http
@@ -538,8 +538,8 @@ class XUI_Simulation extends Simulation {
       ImmigrationAndAsylumSolicitorScenario.inject(simulationProfile(testType, iacTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
 			NoFaultDivorceSolicitorSoleScenario.inject(simulationProfile(testType, nfdSoleTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
 			NoFaultDivorceSolicitorJointScenario.inject(simulationProfile(testType, nfdJointTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-      FinancialRemedySolicitorConsentedScenario.inject(simulationProfile(testType, frConsentedTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
-			FinancialRemedySolicitorContestedScenario.inject(simulationProfile(testType, frContestedTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+//      FinancialRemedySolicitorConsentedScenario.inject(simulationProfile(testType, frConsentedTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
+//			FinancialRemedySolicitorContestedScenario.inject(simulationProfile(testType, frContestedTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
 			FamilyPublicLawSolicitorScenario.inject(simulationProfile(testType, fplTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
       CaseworkerScenario.inject(simulationProfile(testType, caseworkerTargetPerHour, numberOfPipelineUsers)).pauses(pauseOption),
 

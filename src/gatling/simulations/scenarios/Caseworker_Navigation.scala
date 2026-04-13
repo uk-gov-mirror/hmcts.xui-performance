@@ -2,7 +2,7 @@ package scenarios
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
-
+import utils.Login.xuiUrl
 import utils.{Common, Environment, Headers}
 
 object Caseworker_Navigation {
@@ -167,6 +167,7 @@ object Caseworker_Navigation {
         //the doc, and throwing an http 401. This is the same as the 401 issue at login. Cause is unknown.
         .exec(addCookie(Cookie("xui-webapp", "#{xuiWebAppCookie}")
           .withMaxAge(28800)
+          .withDomain(xuiUrl.replace("https://", ""))
           .withSecure(true)))
 
         .exec(http("XUI_Caseworker_090_010_ViewDocument")

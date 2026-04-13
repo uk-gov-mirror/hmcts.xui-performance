@@ -2,6 +2,7 @@ package scenarios
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
+import utils.Login.xuiUrl
 import utils.{Common, Environment, Headers}
 
 /*======================================================================================
@@ -539,6 +540,7 @@ object Solicitor_Probate {
       //with a 401 unauthorized, so this code is forcing the original cookie back in to the Gatling session
       .exec(addCookie(Cookie("xui-webapp", "#{xuiWebAppCookie}")
         .withMaxAge(28800)
+        .withDomain(xuiUrl.replace("https://", ""))
         .withSecure(true)))
 
       .exec(Common.activity)

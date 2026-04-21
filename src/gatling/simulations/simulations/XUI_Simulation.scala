@@ -9,7 +9,10 @@ import scenarios._
 import utils._
 import xui._
 import elasticSearchFeeder._
-
+import io.gatling.core.structure.PopulationBuilder
+import scala.concurrent.duration._
+import scala.language.postfixOps
+import scala.util.Random
 
 import scala.concurrent.duration._
 import scala.io.Source
@@ -18,7 +21,7 @@ import java.time.LocalDateTime
 
 class XUI_Simulation extends Simulation {
 
-	val UserFeederPRL = csv("UserDataPRL.csv").circular
+
 	val UserFeederPRLBarrister = csv("UserDataPRLBarristerList.csv").circular
 	val UserFeederPRLCourtAdmin = csv("UserDataPRLCourtAdmin.csv").circular
 	val UserFeederBails = csv("UserDataBails.csv").circular
@@ -36,6 +39,7 @@ class XUI_Simulation extends Simulation {
   val AddLAList = csv("AddLAList.csv").circular
   val LAData = csv("LAData.csv").circular
   val CWData = csv("CWData.csv").circular
+  val UserFeederPRL = csv("UserDataPRL.csv").circular
 
 	//Read in text labels required for each NFD case type - sole and joint case labels are different, so are fed directly into the JSON payload bodies
 	val nfdSoleLabelsInitialised = Source.fromResource("bodies/nfd/labels/soleLabelsInitialised.txt").mkString
@@ -750,6 +754,10 @@ class XUI_Simulation extends Simulation {
   }
 
   setUp(
+    //PRLC100AddLAScenario.inject(simulationProfile(testType, 100, 100)).pauses(pauseOption),
+    //PRLC100LAScenario.inject(simulationProfile(testType, 1, 1)).pauses(pauseOption),
+    //PRLC100SolicitorScenario.inject(simulationProfile(testType, 1, 1)).pauses(pauseOption),
+    //PRLFL401SolicitorScenario.inject(simulationProfile(testType, 1, 1)).pauses(pauseOption),
     //PRLC100AddLAScenario.inject(simulationProfile(testType, 100, 100)).pauses(pauseOption),
     ///PRLC100SolicitorScenario.inject(simulationProfile(testType, 1, 1)).pauses(pauseOption)
     //PRLC100LAScenario.inject(simulationProfile(testType, 1, 1)).pauses(pauseOption)

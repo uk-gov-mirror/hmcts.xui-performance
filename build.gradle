@@ -33,7 +33,7 @@ repositories {
 
 dependencies {
     gatlingImplementation project(':common-performance')
-    gatlingImplementation 'org.scala-lang:scala-library:2.13.11'
+    gatlingImplementation 'org.scala-lang:scala-library:2.13.18'
 }
 
 dependencyCheck {
